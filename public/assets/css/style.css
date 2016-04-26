@@ -1,0 +1,42 @@
+body {
+    background: #f7f7f9;
+}
+
+* {
+    border-radius: 0px !important;
+}
+
+.btn, nav ul li a {
+    transition: all linear 150ms;
+}
+
+@font-face {
+  font-family: Shabnam;
+  src: url('../fonts/Shabnam.eot');
+  src: url('../fonts/Shabnam.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Shabnam.woff') format('woff'),
+       url('../fonts/Shabnam.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Shabnam;
+  src: url('../fonts/Shabnam-Bold.eot');
+  src: url('../fonts/Shabnam-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Shabnam-Bold.woff') format('woff'),
+       url('../fonts/Shabnam-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+.main-panel {
+    margin: 10% 0 10% 0;
+}
+
+
+.font-shabnam {
+    font-family: Shabnam;
+}
+
+.font-tahoma {
+    font-family: tahoma;
+}
