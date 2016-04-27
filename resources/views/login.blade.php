@@ -7,7 +7,8 @@
         <h3 class="panel-title">ورود به سیستم</h3>
     </div>
     <div class="panel-body">
-        <form>
+        <form method="post" action="{{route('user.auth')}}">
+            {{csrf_field()}}
             <div class="form-group">
                 <label for="email">ایمیل</label>
                 <input class="form-control" type="email" name="email" id="email" required>
