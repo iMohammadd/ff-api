@@ -20,4 +20,6 @@ Route::get('user/logout', 'UserController@logout')->middleware('auth');
 Route::group(['middleware'=>['auth', 'web']], function(){
     Route::get('/', ['as'=>'home', 'uses'=>'FactorController@index']);
     Route::get('factor/list', ['as'=>'factor.list', 'uses'=>'FactorController@index']);
+    Route::get('factor/create', ['as'=>'factor.add', 'uses'=>'FactorController@add']);
+    Route::post('factor/create', ['as'=>'factor.create', 'uses'=>'FactorController@create']);
 });

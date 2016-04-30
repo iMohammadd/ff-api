@@ -14,7 +14,7 @@
                     <th>#</th>
                     <th>مشتری</th>
                     <th>وضعیت</th>
-                    <th><a href="#" class="btn btn-primary pull-left">فاکتور جدید</a></th>
+                    <th><a href="{{route('factor.add')}}" class="btn btn-primary pull-left">فاکتور جدید</a></th>
                 </tr>
                 </thead>
                 <tbody>
