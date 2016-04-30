@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Factor extends Model
 {
@@ -11,6 +12,6 @@ class Factor extends Model
     
     public function order()
     {
-        $this->hasMany('App\Order');
+        return $this->hasMany(Order::class);
     }
 }

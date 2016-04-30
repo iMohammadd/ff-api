@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Factor;
 
 class Order extends Model
 {
@@ -11,6 +12,6 @@ class Order extends Model
 
     public function factor()
     {
-        $this->belongsTo('App\Factor');
+        return $this->belongsTo(Factor::class);
     }
 }

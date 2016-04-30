@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
 
-Route::get('user/auth', ['as'=> 'user.authform', 'uses' => 'UserController@index']);
+
+Route::get('login', ['as'=> 'user.authform', 'uses' => 'UserController@index']);
 Route::post('user/auth', ['as'=> 'user.auth', 'uses' => 'UserController@login']);
-Route::get('user/logout', 'UserController@logout');
+Route::get('user/logout', 'UserController@logout')->middleware('auth');
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>['auth', 'web']], function(){
+    Route::get('/', ['as'=>'home', 'uses'=>'FactorController@index']);
     Route::get('factor/list', ['as'=>'factor.list', 'uses'=>'FactorController@index']);
 });

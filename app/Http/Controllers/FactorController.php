@@ -12,6 +12,7 @@ class FactorController extends Controller
     //
     public function index()
     {
-        return Factor::all();
+        $factors = Factor::all();
+        return view('Factor.list', compact('factors'));
     }
 }
