@@ -39,3 +39,6 @@
 
     </div>
 @stop
+@section('side')
+    @include('sidebar')
+@stop

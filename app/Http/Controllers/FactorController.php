@@ -17,6 +17,20 @@ class FactorController extends Controller
         return view('Factor.list', compact('factors'));
     }
 
+    public function view($id)
+    {
+        $factor = Factor::find($id);
+        return view('Factor.view', compact('factor'));
+    }
+
+    public function status($id, Request $request)
+    {
+        $factor = Factor::find($id);
+        $factor->status = $request->status;
+        $factor->save();
+        return Redirect::back();
+    }
+
     public function add()
     {
         return view('Factor.create');

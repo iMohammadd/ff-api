@@ -21,9 +21,9 @@
                 @foreach($factors as $item)
                 <tr>
                     <th scope="row"></th>
-                    <td><a href="order-list.html">{{$item->customer}}</a></td>
+                    <td><a href="{{route('factor.view', ['Factor'=> $item->id])}}">{{$item->customer}}</a></td>
                     <td>{{$item->status}}</td>
-                    <td><div class="btn-group pull-left"><a href="factor-list.html" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
+                    <td><div class="btn-group pull-left"><a href="{{route('factor.view', ['Factor'=> $item->id])}}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -49,4 +49,7 @@
             </ul>
         </nav>
     </div>
+@stop
+@section('side')
+    @include('sidebar')
 @stop
