@@ -28,4 +28,7 @@ Route::group(['middleware'=>['auth', 'web']], function(){
     
     Route::get('factor/{id}/add', ['as'=>'order.add', 'uses'=>'OrderController@add']);
     Route::post('factor/{id}/add', ['as'=>'order.create', 'uses'=>'OrderController@create']);
+
+    Route::get('factor/{id}/edit', ['as'=>'factor.edit', 'uses'=>'FactorController@edit']);
+    Route::post('factor/{id}/edit', ['as'=>'factor.store', 'uses'=>'FactorController@store']);
 });

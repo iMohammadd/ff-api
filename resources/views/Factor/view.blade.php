@@ -4,7 +4,8 @@
 @stop
 @section('main')
     <div class="panel-heading">
-        <h3 class="panel-title">سفارشات {{$factor->customer}}</h3>
+        <h3 class="panel-title">سفارشات {{$factor->customer}} <a href="{{route('factor.edit', ['id'=> $factor->id])}}" class="pull-left"><span class="glyphicon glyphicon-edit"></span></a></h3>
+
     </div>
     <div class="panel-body">
         <div class="">

@@ -36,6 +36,22 @@ class FactorController extends Controller
         return view('Factor.create');
     }
 
+    public function edit($id) {
+        $factor = Factor::find($id);
+        return view('Factor.edit', compact('factor'));
+    }
+
+    public function store($id, Request $request)
+    {
+        $factor = Factor::find($id);
+        $factor->num = $request->num;
+        $factor->customer = $request->customer;
+        $factor->price = $request->price;
+        $factor->status = $request->status;
+        $factor->save();
+        return Redirect::route('factor.view', ['id'=>$request->id]);
+    }
+
     public function create(Request $request)
     {
         Factor::create($request->all());

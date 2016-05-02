@@ -1,26 +1,27 @@
 @extends('master')
 @section('title')
-    فاکتور جدید
+    ویرایش فاکتور {{$factor->customer}} | {{$factor->num}}
 @stop
 @section('main')
     <div class="panel-heading">
-        <h3 class="panel-title">افزودن / ویرایش فاکتور</h3>
+        <h3 class="panel-title">    ویرایش فاکتور {{$factor->customer}} | {{$factor->num}}
+        </h3>
     </div>
     <div class="panel-body">
         <div class="">
-            <form method="post" action="{{route('factor.create')}}">
+            <form method="post" action="{{route('factor.store', ['id'=>$factor->id])}}">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="num">شماره فاکتور</label>
-                    <input type="text" name="num" id="num" value="{{old('num')}}" class="form-control" placeholder="شماره فاکتور" required>
+                    <input type="text" name="num" id="num" value="{{$factor->num}}" class="form-control" placeholder="شماره فاکتور" required>
                 </div>
                 <div class="form-group">
                     <label for="name">نام</label>
-                    <input type="text" name="customer" value="{{old('customer')}}" id="name" class="form-control" placeholder="نام" required>
+                    <input type="text" name="customer" value="{{$factor->customer}}" id="name" class="form-control" placeholder="نام" required>
                 </div>
                 <div class="form-group">
                     <label for="price">هزینه</label>
-                    <input type="text" name="price" value="{{old('price')}}" id="price" class="form-control" placeholder="هزینه" required>
+                    <input type="text" name="price" value="{{$factor->price}}" id="price" class="form-control" placeholder="هزینه" required>
                 </div>
                 <div class="form-group">
                     <label for="status">وضعیت</label>
