@@ -57,4 +57,9 @@ class FactorController extends Controller
         Factor::create($request->all());
         return Redirect::route('factor.list');
     }
+
+    public function get(Request $request)
+    {
+        return $request->all();
+    }
 }

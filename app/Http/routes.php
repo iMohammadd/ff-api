@@ -32,3 +32,5 @@ Route::group(['middleware'=>['auth', 'web']], function(){
     Route::get('factor/{id}/edit', ['as'=>'factor.edit', 'uses'=>'FactorController@edit']);
     Route::post('factor/{id}/edit', ['as'=>'factor.store', 'uses'=>'FactorController@store']);
 });
+
+Route::any('api/factor/get', 'FactorController@get');
