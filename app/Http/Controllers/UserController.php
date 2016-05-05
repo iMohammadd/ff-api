@@ -26,7 +26,7 @@ class UserController extends Controller
         if(Auth::attempt(['email'=> $request->email, 'password'=> $request->password])) {
             return Redirect::route('factor.list');
         } else {
-            return Redirect::back()->withErrors();
+            return Redirect::back();
         }
     }
 

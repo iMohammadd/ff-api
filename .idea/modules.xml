@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ff_api.iml" filepath="$PROJECT_DIR$/.idea/ff_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ff-api.iml" filepath="$PROJECT_DIR$/.idea/ff-api.iml" />
     </modules>
   </component>
 </project>

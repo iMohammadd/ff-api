@@ -10,6 +10,7 @@
     <div class="panel-body">
         <div class="">
             <p>مشتری: {{$factor->customer}}</p>
+            <p>شماره فاکتور: {{$factor->num}}</p>
             <p>تعداد سفارشات: {{count($factor->order)}}</p>
             <p>هزینه: {{number_format($factor->price)}} تومان</p>
             <p> وضعیت سفارش:{{$factor->status}}
@@ -43,7 +44,7 @@
                 <tr>
                     <th scope="row"></th>
                     <td>{{$item->title}}</td>
-                    <td><div class="btn-group pull-left"><a href="#" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
+                    <td><div class="btn-group pull-left"><a href="{{route('order.edit', ['id'=>$item->id])}}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
                 </tr>
                 @endforeach
                 <tr>

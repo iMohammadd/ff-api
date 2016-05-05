@@ -25,4 +25,19 @@ class OrderController extends Controller
         $factor->order()->create($request->all());
         return Redirect::route('factor.view', ['id'=>$id]);
     }
+
+    public function edit($id)
+    {
+        $order = Order::find($id);
+        return view('Order.edit', compact('order'));
+    }
+
+    public function store(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->title = $request->title;
+        $order->save();
+
+        return Redirect::route('factor.view', ['id'=>$order->factor_id]);
+    }
 }
