@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -60,7 +61,15 @@ class FactorController extends Controller
 
     public function get(Request $request)
     {
-        return \Response::json(Factor::with('order')->where('num', '=', $request->num)->firstOrFail());
+        try {
+            $res = Factor::with('order')->where('num', '=', $request->num)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 404);
+        }
+
+        return $res;
         //return $request->num;
     }
 }
