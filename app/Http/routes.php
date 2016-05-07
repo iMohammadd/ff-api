@@ -36,4 +36,6 @@ Route::group(['middleware'=>['auth', 'web']], function(){
     Route::post('order/{id}/edit', ['as'=>'order.store', 'uses'=>'OrderController@store']);
 });
 
-Route::any('api/factor/get', 'FactorController@get');
+Route::group(['middleware'=>'cors'], function(){
+    Route::any('api/factor/get', 'FactorController@get');
+});

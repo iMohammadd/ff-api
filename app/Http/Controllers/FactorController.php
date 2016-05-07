@@ -61,5 +61,6 @@ class FactorController extends Controller
     public function get(Request $request)
     {
         return \Response::json(Factor::with('order')->where('num', '=', $request->num)->firstOrFail());
+        //return $request->num;
     }
 }
