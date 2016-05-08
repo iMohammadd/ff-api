@@ -34,6 +34,9 @@ Route::group(['middleware'=>['auth', 'web']], function(){
 
     Route::get('order/{id}/edit', ['as'=>'order.edit', 'uses'=>'OrderController@edit']);
     Route::post('order/{id}/edit', ['as'=>'order.store', 'uses'=>'OrderController@store']);
+    
+    Route::get('user/edit', ['as'=>'user.edit', 'uses'=>'UserController@edit']);
+    Route::post('user/edit', ['as'=>'user.store', 'uses'=>'UserController@store']);
 });
 
 Route::group(['middleware'=>'cors'], function(){

@@ -35,4 +35,14 @@ class UserController extends Controller
         Auth::logout();
         return Redirect::route('factor.list');
     }
+
+    public function edit()
+    {
+        return view('User.edit');
+    }
+
+    public function store(Request $request)
+    {
+        return $request->all();
+    }
 }
