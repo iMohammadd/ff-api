@@ -25,8 +25,9 @@
         <div class="col-md-3 font-shabnam main-panel">
             @yield('side')
         </div>
-        <div class="col-md-6 font-shabnam">
-            <div class="panel panel-default main-panel">
+        <div class="col-md-6 font-shabnam main-panel">
+            @include('message')
+            <div class="panel panel-default">
                 @yield('main')
             </div>
         </div>
