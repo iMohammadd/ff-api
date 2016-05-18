@@ -27,7 +27,7 @@ angular.module('starter', ['ionic'])
     $scope.showForm = false;
     $scope.callFunc = function() {
         console.log($scope.myVar);
-        $http.post("http://localhost/ff_api/public/api/factor/get", {"num": $scope.myVar}).then(function(resp){
+        $http.post("http://app.ffprint.ir/public/api/factor/get", {"num": $scope.myVar}).then(function(resp){
             console.log(resp);
             $scope.factor = resp;
             $scope.showForm = true;
