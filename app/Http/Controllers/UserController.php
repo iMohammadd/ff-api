@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\userStoreRequest;
 use Auth;
 use Redirect;
 
@@ -20,6 +21,24 @@ class UserController extends Controller
         } else {
             return view('login');
         }
+    }
+
+    public function userList()
+    {
+        $users = User::paginate(15);
+        return view('User.list', compact('users'));
+    }
+
+    public function userCreate()
+    {
+        return view('User.create');
+    }
+
+    public function userStore(userStoreRequest $request)
+    {
+        $request->merge(['is_admin'=>0]);
+        User::create($request->all());
+        return Redirect::route('users.list');
     }
 
     public function login(Request $request)

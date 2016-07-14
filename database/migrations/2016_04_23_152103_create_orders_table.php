@@ -14,7 +14,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('factor_id')->index()->unsigned();
+            $table->integer('factor_id')
+                ->unsigned()
+                ->index();
+            $table->foreign('factor_id')
+                ->references('id')
+                ->on('factors')
+                ->onDelete('cascade');
             $table->string('title');
             $table->timestamps();
         });

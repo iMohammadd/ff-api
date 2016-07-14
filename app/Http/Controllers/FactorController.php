@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\FactorRequest;
 use App\Factor;
 use Illuminate\Support\Facades\Redirect;
 
@@ -42,20 +44,21 @@ class FactorController extends Controller
         return view('Factor.edit', compact('factor'));
     }
 
-    public function store($id, Request $request)
+    public function store(FactorRequest $request, $id)
     {
         $factor = Factor::find($id);
         $factor->num = $request->num;
-        $factor->customer = $request->customer;
         $factor->price = $request->price;
         $factor->status = $request->status;
         $factor->save();
         return Redirect::route('factor.view', ['id'=>$request->id]);
     }
 
-    public function create(Request $request)
+    public function create($id, FactorRequest $request)
     {
-        Factor::create($request->all());
+        $user = User::find($id);
+        $user->factors()->create($request->all());
+        //Factor::create($request->all());
         return Redirect::route('factor.list');
     }
 

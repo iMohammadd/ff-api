@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\OrderRequest;
 use App\Factor;
 use App\Order;
 use Illuminate\Support\Facades\Redirect;
@@ -19,7 +20,7 @@ class OrderController extends Controller
         return view('Order.add', compact('factor'));
     }
 
-    public function create($id, Request $request)
+    public function create($id, OrderRequest $request)
     {
         $factor = Factor::find($id);
         $factor->order()->create($request->all());
@@ -32,7 +33,7 @@ class OrderController extends Controller
         return view('Order.edit', compact('order'));
     }
 
-    public function store(Request $request, $id)
+    public function store(OrderRequest $request, $id)
     {
         $order = Order::find($id);
         $order->title = $request->title;

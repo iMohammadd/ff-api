@@ -12,16 +12,18 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>مشتری</th>
+                    <th>شماره فاکتور</th>
+                    <th>مالک</th>
                     <th>وضعیت</th>
-                    <th><a href="{{route('factor.add')}}" class="btn btn-primary pull-left">فاکتور جدید</a></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($factors as $item)
                 <tr>
                     <th scope="row"></th>
-                    <td><a href="{{route('factor.view', ['Factor'=> $item->id])}}">{{$item->customer}}</a></td>
+                    <td><a href="{{route('factor.view', ['Factor'=> $item->id])}}">{{$item->num}}</a></td>
+                    <td>{{$item->user->name}}</td>
                     <td>{{$item->status}}</td>
                     <td><div class="btn-group pull-left"><a href="{{route('factor.view', ['Factor'=> $item->id])}}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
                 </tr>

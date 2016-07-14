@@ -8,15 +8,11 @@
     </div>
     <div class="panel-body">
         <div class="">
-            <form method="post" action="{{route('factor.create')}}">
+            <form method="post">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="num">شماره فاکتور</label>
                     <input type="text" name="num" id="num" value="{{old('num')}}" class="form-control" placeholder="شماره فاکتور" required>
-                </div>
-                <div class="form-group">
-                    <label for="name">نام</label>
-                    <input type="text" name="customer" value="{{old('customer')}}" id="name" class="form-control" placeholder="نام" required>
                 </div>
                 <div class="form-group">
                     <label for="price">هزینه</label>

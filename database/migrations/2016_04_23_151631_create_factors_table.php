@@ -14,8 +14,15 @@ class CreateFactorsTable extends Migration
     {
         Schema::create('factors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('num')->unique();
-            $table->string('customer');
+            $table->string('num')
+                ->unique();
+            $table->integer('user_id')
+                ->unsigned()
+                ->index();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->integer('price');
             $table->string('status');
             $table->timestamps();

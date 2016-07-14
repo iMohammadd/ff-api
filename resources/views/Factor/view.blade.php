@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body">
         <div class="">
-            <p>مشتری: {{$factor->customer}}</p>
+            <p>مشتری: {{$factor->user->name}}</p>
             <p>شماره فاکتور: {{$factor->num}}</p>
             <p>تعداد سفارشات: {{count($factor->order)}}</p>
             <p>هزینه: {{number_format($factor->price)}} تومان</p>
