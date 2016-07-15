@@ -18,7 +18,7 @@ Route::post('user/auth', ['as'=> 'user.auth', 'uses' => 'UserController@login'])
 Route::get('user/logout', ['as'=>'user.logout', 'uses'=>'UserController@logout'])->middleware('auth');
 
 Route::group(['middleware'=>['auth', 'admin', 'web']], function(){
-    Route::get('/', ['as'=>'home', 'uses'=>'FactorController@index']);
+    Route::get('/', ['as'=>'dashboard.index', 'uses'=>'DashboardController@index']);
     
     Route::get('/users', ['as'=>'users.list', 'uses'=>'UserController@userList']);
     Route::get('/users/create', ['as'=>'users.create', 'uses'=>'UserController@userCreate']);
@@ -40,8 +40,8 @@ Route::group(['middleware'=>['auth', 'admin', 'web']], function(){
     Route::get('order/{id}/edit', ['as'=>'order.edit', 'uses'=>'OrderController@edit']);
     Route::post('order/{id}/edit', ['as'=>'order.store', 'uses'=>'OrderController@store']);
     
-    Route::get('user/edit', ['as'=>'user.edit', 'uses'=>'UserController@edit']);
-    Route::post('user/edit', ['as'=>'user.store', 'uses'=>'UserController@store']);
+    Route::get('users/{id}/edit', ['as'=>'users.edit', 'uses'=>'UserController@edit']);
+    Route::post('users/{id}/edit', ['as'=>'users.store', 'uses'=>'UserController@store']);
 });
 
 Route::group(['middleware'=>'cors'], function(){

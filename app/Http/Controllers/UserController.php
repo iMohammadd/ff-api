@@ -44,7 +44,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         if(Auth::attempt(['email'=> $request->email, 'password'=> $request->password])) {
-            return Redirect::route('factor.list');
+            return Redirect::route('dashboard.index');
         } else {
             return Redirect::back();
         }
@@ -56,29 +56,29 @@ class UserController extends Controller
         return Redirect::route('user.authform');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('User.edit');
+        $user = User::find($id);
+        return view('User.edit', compact('user'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        if(\Hash::check($request->password, Auth::user()->password)) {
-            if($request->newpassword == $request->confrimpassword) {
-                $request->session()->flash('flash_message', 'ع©ظ„ظ…ظ‡ ط¹ط¨ظˆط± طھط¹ظˆغŒط¶ ط´ط¯');
-                $request->session()->flash('flash_message_level', 'success');
-                $user = User::find(1);
-                $user->password = bcrypt($request->newpassword);
-                $user->save();
+        if ($request->newpassword != '' && $request->newpassword == $request->confrimpassword) {
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->password = bcrypt($request->newpassword);
+            $user->save();
+            if ($user->isAdmin()) {
                 return Redirect::route('user.logout');
-            } else {
-                $request->session()->flash('flash_message', 'ع©ظ„ظ…ظ‡ ط¹ط¨ظˆط± ط¬ط¯غŒط¯ ظˆ طھع©ط±ط§ط± ط¢ظ† ظ‡ظ…ط®ظˆط§ظ†غŒ ظ†ط¯ط§ط±ظ†ط¯');
-                $request->session()->flash('flash_message_level', 'danger');
-                return back();
             }
+            return Redirect::route('users.list');
+        } elseif ($request->newpassword == '' && $request->confrimpassword == '') {
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->save();
+            return Redirect::route('users.list');
         } else {
-            $request->session()->flash('flash_message', 'ع©ظ„ظ…ظ‡ ط¹ط¨ظˆط± ظپط¹ظ„غŒ طµط­غŒط­ ظ†غŒط³طھ');
-            $request->session()->flash('flash_message_level', 'danger');
             return back();
         }
     }

@@ -6,7 +6,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">لیست مشتری ها</h3>
     </div>
-    <div class="panel-body">
+
         <div class="table-responsive">
             <table id="users" class="table table-striped">
                 <thead>
@@ -20,12 +20,12 @@
                     <tr>
                         <td>{{$user->name}}</td>
                         <td>{{count($user->factors)}}</td>
-                        <td><a href="{{route('factor.add',['id'=>$user->id])}}" class="btn btn-sm btn-info pull-left">فاکتور جدید</a> </td>
+                        <td><div class="btn-group pull-left"><a href="{{route('users.edit',['id'=>$user->id])}}" class="btn btn-sm btn-danger">ویرایش</a> <a href="{{route('factor.add',['id'=>$user->id])}}" class="btn btn-sm btn-info pull-left">فاکتور جدید</a></div> </td>
                     </tr>
                 @endforeach
             </table>
         </div>
-    </div>
+
 @stop
 @section('side')
     @include('sidebar')

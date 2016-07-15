@@ -7,11 +7,11 @@
         <h3 class="panel-title">تغییر کلمه عبور</h3>
     </div>
     <div class="panel-body">
-        <form method="post" action="{{route('user.store')}}">
+        <form method="post" action="{{route('users.store', ['id'=>$user->id])}}">
             {{csrf_field()}}
             <div class="form-group">
-                <label for="password">کلمه عبور فعلی</label>
-                <input class="form-control" type="password" id="password" name="password">
+                <label for="name">نام</label>
+                <input class="form-control" name="name" id="name" type="text" value="{{$user->name}}">
             </div>
             <div class="form-group">
                 <label for="newpassword">کلمه عبور جدید</label>
