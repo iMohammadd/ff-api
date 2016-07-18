@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Factor;
 
-class Order extends Model
+class Order extends \Eloquent
 {
     //
     protected $fillable = ['title'];

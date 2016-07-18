@@ -30,7 +30,7 @@
                     <table class="table table-striped">
                         <tbody>
                         @foreach($factors as $factor)
-                            <tr><td><a href="{{route('factor.view', ['Factor'=> $factor->id])}}">{{$factor->num}}</a> </td><td>{{$factor->price}} تومان</td></tr>
+                            <tr><td><a href="{{route('factor.view', ['Factor'=> $factor->id])}}">{{$factor->num}}</a> </td><td>{{number_format($factor->price)}} تومان</td></tr>
                         @endforeach
                         </tbody>
                     </table>

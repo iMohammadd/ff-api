@@ -17,7 +17,7 @@ Route::get('login', ['as'=> 'user.authform', 'uses' => 'UserController@index']);
 Route::post('user/auth', ['as'=> 'user.auth', 'uses' => 'UserController@login']);
 Route::get('user/logout', ['as'=>'user.logout', 'uses'=>'UserController@logout'])->middleware('auth');
 
-Route::group(['middleware'=>['auth', 'admin', 'web']], function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin', 'web']], function(){
     Route::get('/', ['as'=>'dashboard.index', 'uses'=>'DashboardController@index']);
     
     Route::get('/users', ['as'=>'users.list', 'uses'=>'UserController@userList']);
@@ -36,14 +36,26 @@ Route::group(['middleware'=>['auth', 'admin', 'web']], function(){
 
     Route::get('factor/{id}/edit', ['as'=>'factor.edit', 'uses'=>'FactorController@edit']);
     Route::post('factor/{id}/edit', ['as'=>'factor.store', 'uses'=>'FactorController@store']);
+    
+    Route::get('factor/{id}/delete', ['as'=>'factor.delete', 'uses'=>'FactorController@destroy']);
 
     Route::get('order/{id}/edit', ['as'=>'order.edit', 'uses'=>'OrderController@edit']);
     Route::post('order/{id}/edit', ['as'=>'order.store', 'uses'=>'OrderController@store']);
+    
+    Route::get('order/{id}/delete', 'OrderController@destroy');
     
     Route::get('users/{id}/edit', ['as'=>'users.edit', 'uses'=>'UserController@edit']);
     Route::post('users/{id}/edit', ['as'=>'users.store', 'uses'=>'UserController@store']);
 });
 
-Route::group(['middleware'=>'cors'], function(){
-    Route::any('api/factor/get', 'FactorController@get');
+Route::group(['middleware'=>'cors', 'prefix'=>'api/v1'], function(){
+    //Route::any('factor/get', 'FactorController@get');
+    Route::any('auth', 'apiController@auth');
+    Route::resource('factor','apiController');
+});
+
+Route::group(['prefix'=>'pay', 'middleware'=>['web']], function() {
+    Route::any('callback/{id}', ['as'=>'pay.callback', 'uses'=>'PaymentController@callback']);
+    Route::get('{id}', ['as'=>'pay.index', 'uses'=>'PaymentController@index']);
+
 });

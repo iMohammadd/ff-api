@@ -62,10 +62,17 @@ class FactorController extends Controller
         return Redirect::route('factor.list');
     }
 
+    public function destroy($id)
+    {
+        $factor = Factor::find($id);
+        $factor->delete();
+        return Redirect::route('factor.list');
+    }
+
     public function get(Request $request)
     {
         try {
-            $res = Factor::with('order')->where('num', '=', $request->num)->firstOrFail();
+            $res = Factor::with('order')->with('user')->where('num', '=', $request->num)->firstOrFail();
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => $e->getMessage(),

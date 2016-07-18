@@ -41,4 +41,10 @@ class OrderController extends Controller
 
         return Redirect::route('factor.view', ['id'=>$order->factor_id]);
     }
+
+    public function destroy($id)
+    {
+        $order = Order::find($id)->delete();
+        return redirect()->back();
+    }
 }

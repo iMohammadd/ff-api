@@ -17,6 +17,11 @@
                 <label for="password">کلمه عبور</label>
                 <input class="form-control" type="password" name="password" id="password" required>
             </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember" value="true"> بخاطر بسپار
+                </label>
+            </div>
             <div class="form-group">
                 <button class="btn btn-info form-control">ورود به سیستم</button>
             </div>

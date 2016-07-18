@@ -2,6 +2,10 @@
 @section('title')
     سفارشات {{$factor->customer}}
 @stop
+@section('head')
+    <link href="{{asset('assets/css/sweetalert.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('assets/css/twitter.css')}}" type="text/css" rel="stylesheet">
+@stop
 @section('main')
     <div class="panel-heading">
         <h3 class="panel-title">سفارشات {{$factor->customer}} <a href="{{route('factor.edit', ['id'=> $factor->id])}}" class="pull-left"><span class="glyphicon glyphicon-edit"></span></a></h3>
@@ -44,7 +48,7 @@
                 <tr>
                     <th scope="row"></th>
                     <td>{{$item->title}}</td>
-                    <td><div class="btn-group pull-left"><a href="{{route('order.edit', ['id'=>$item->id])}}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a href="#" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
+                    <td><div class="btn-group pull-left"><a href="{{route('order.edit', ['id'=>$item->id])}}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a><a onclick="deleteItem({{$item->id}})" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-remove"></i></a></div></td>
                 </tr>
                 @endforeach
                 <tr>
@@ -59,4 +63,28 @@
 @stop
 @section('side')
     @include('sidebar')
+@stop
+@section('script')
+    <script src="{{asset('assets/js/sweetalert.min.js')}}"></script>
+    <script>
+        function deleteItem(id) {
+            swal({
+                        title: "از حذف کردن این سفارش مطمئنید؟",
+                        text: "در صورت حذف قابل بازیابی نمی‌باشد",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "بله",
+                        cancelButtonText: "خیر",
+                        closeOnConfirm: false
+                    },
+                    function(isConfrim){
+                        if(isConfrim) {
+                            window.location.assign(
+                                    '../order/'+ id +'/delete'
+                            );
+                        }
+                    });
+        }
+    </script>
 @stop

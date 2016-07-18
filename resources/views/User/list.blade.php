@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{$user->name}}</td>
                         <td>{{count($user->factors)}}</td>
-                        <td><div class="btn-group pull-left"><a href="{{route('users.edit',['id'=>$user->id])}}" class="btn btn-sm btn-danger">ویرایش</a> <a href="{{route('factor.add',['id'=>$user->id])}}" class="btn btn-sm btn-info pull-left">فاکتور جدید</a></div> </td>
+                        <td><div class="btn-group pull-left"><a href="{{route('users.edit',['id'=>$user->id])}}" class="btn btn-xs btn-danger">ویرایش</a> <a href="{{route('factor.add',['id'=>$user->id])}}" class="btn btn-xs btn-info pull-left">فاکتور جدید</a></div> </td>
                     </tr>
                 @endforeach
             </table>
