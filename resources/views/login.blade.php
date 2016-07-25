@@ -19,7 +19,7 @@
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="remember" value="true"> بخاطر بسپار
+                    <input type="checkbox" name="remember" value="1"> بخاطر بسپار
                 </label>
             </div>
             <div class="form-group">

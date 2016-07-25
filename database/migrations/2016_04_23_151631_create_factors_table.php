@@ -25,6 +25,7 @@ class CreateFactorsTable extends Migration
                 ->onDelete('cascade');
             $table->integer('price');
             $table->string('refId')->index();
+            $table->boolean('paid')->unsigned()->index();
             $table->string('status');
             $table->timestamps();
         });

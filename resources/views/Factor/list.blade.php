@@ -3,8 +3,8 @@
     فاکتورها
 @stop
 @section('head')
-    <link href="{{asset('assets/css/sweetalert.css')}}" type="text/css" rel="stylesheet">
-    <link href="{{asset('assets/css/twitter.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('public/assets/css/sweetalert.css')}}" type="text/css" rel="stylesheet">
+    <link href="{{asset('public/assets/css/twitter.css')}}" type="text/css" rel="stylesheet">
 @stop
 @section('main')
     <div class="panel-heading">
@@ -46,7 +46,7 @@
     @include('sidebar')
 @stop
 @section('script')
-    <script src="{{asset('assets/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/sweetalert.min.js')}}"></script>
     <script>
         function deleteItem(id) {
             swal({

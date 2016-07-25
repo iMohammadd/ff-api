@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Factor;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -45,7 +47,8 @@ class apiController extends Controller
         } catch(\Exception $e) {
             return $e->getMessage();
         }
-        return response()->json(['user'=>$user, 'user_factors'=>$user->factors]);
+        $factors = User::find($user->id)->factors()->with('order')->get();
+        return response()->json(['user'=>$user, 'user_factors'=>$factors]);
     }
 
     /**
